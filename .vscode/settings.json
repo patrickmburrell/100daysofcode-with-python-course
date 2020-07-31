@@ -1,3 +1,9 @@
 {
-    "python.pythonPath": "/Users/aiuw003/miniconda3/envs/100-DAYS-OF-CODE-WITH-PYTHON/bin/python"
+    "python.pythonPath": "/Users/aiuw003/miniconda3/envs/100-DAYS-OF-CODE-WITH-PYTHON/bin/python",
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true
 }
