@@ -1,6 +1,7 @@
 import random
 from player import Player
 from roll import Roll
+from advanced_reader import read_rolls
 
 ROCK = "rock"
 PAPER = "paper"
@@ -19,6 +20,12 @@ def get_name():
     name = input("What is your name? ")
     print()
     return name
+
+
+def get_advanced():
+    adv = input("Want the advanced version? ")
+    print()
+    return adv == "y" or adv == "Y"
 
 
 def get_rounds():
@@ -44,18 +51,26 @@ def display_outcome(message1, message2, message3):
     print()
 
 
-def build_rolls():
-    rolls = [
-        Roll(ROCK, [SCISSORS], [PAPER]),
-        Roll(PAPER, [ROCK], [SCISSORS]),
-        Roll(SCISSORS, [PAPER], [ROCK]),
-    ]
+def build_rolls(advanced):
+    if advanced:
+        rolls = read_rolls()
+    else:
+        rolls = [
+            Roll(ROCK, [SCISSORS], [PAPER]),
+            Roll(PAPER, [ROCK], [SCISSORS]),
+            Roll(SCISSORS, [PAPER], [ROCK]),
+        ]
     return rolls
+
+
+def get_roll_names(rolls):
+    return [roll.name for roll in rolls]
 
 
 def get_roll(rolls):
     roll_name = ""
-    while roll_name not in [roll.name for roll in rolls]:
+    roll_names = get_roll_names(rolls)
+    while roll_name not in roll_names:
         print("Available rolls:")
         for roll in rolls:
             print(f" - {roll.name}")
@@ -116,7 +131,9 @@ def main():
     name = get_name()
     display_welcome(name)
 
-    rolls = build_rolls()
+    advanced = get_advanced()
+
+    rolls = build_rolls(advanced)
     max_rounds = get_rounds()
 
     player1 = Player(name)
