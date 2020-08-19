@@ -22,6 +22,10 @@ Your goal today will be to consider all the error cases in your application. Wha
 
 Once you have a list of potential problems, run the app in ways that will trigger those errors. Make a list of the exception types so that you'll be able to handle them individually in the app.
 
+- EndpointConnectionError
+- ClientError
+- KeyError
+
 ## Day N+2: Add error handling to one of your applications
 
 Now that you know the error conditions in your applications, it's time to add error handling.
